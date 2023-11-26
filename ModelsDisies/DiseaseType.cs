@@ -1,4 +1,5 @@
-﻿namespace MedicalCareApi.Models
+﻿
+namespace ModelsDisease
 {
     public class DiseaseType
     {

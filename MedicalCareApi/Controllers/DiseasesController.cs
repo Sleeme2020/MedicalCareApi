@@ -1,10 +1,11 @@
-using MedicalCareApi.DB;
-using MedicalCareApi.Views;
+
+using ViewsDisease;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MedicalCareApi.Models;
+using ModelsDisease;
 using Microsoft.AspNetCore.Http.HttpResults;
-using MedicalCareApi.Service;
+using ServiceDisease;
+
 
 namespace MedicalCareApi.Controllers
 {
@@ -23,7 +24,9 @@ namespace MedicalCareApi.Controllers
         {
             var t = Task.Run(delegate ()
             {
-                return _diseasesSingleton.BuildServiseDisease().getDisease().Select(u => _diseasesSingleton.GetViewDiseases(u));
+                return _diseasesSingleton.BuildServiseDisease()
+                .getDisease()
+                .Select(u => ViewConverterDises.DisiesToView(u,u.DiseaseType));
 
             });
             return await t;
@@ -32,12 +35,16 @@ namespace MedicalCareApi.Controllers
         [HttpGet("{Id}")]
         public async Task<ViewDiseases> Get([FromQuery] Guid Id)
         {
-            var t = Task.Run(delegate ()
+            var t = await Task.Run(async delegate ()
             {
-                return _diseasesSingleton.getDisease(Id);
+                var dis = await _diseasesSingleton.getDisease(Id);
+                return ViewConverterDises.DisiesToView(
+                     dis, dis.DiseaseType
+                    );
 
             });
-            return await t;
+
+            return t;
         }
 
         [HttpPost]
@@ -45,10 +52,19 @@ namespace MedicalCareApi.Controllers
         {
             if (viewDiseases.Id == Guid.Empty)
             {
-                return await _diseasesSingleton.AddDisease(viewDiseases);
-            } 
-            
-            return await _diseasesSingleton.UpdateDisease(viewDiseases);
+                var Dis = await _diseasesSingleton.AddDisease(
+                        ViewConverterDises.ViewToDisease(viewDiseases, viewDiseases.DiseasesType)
+                        );
+                return ViewConverterDises.DisiesToView(
+                    Dis, Dis.DiseaseType
+                    );
+            }
+            var dis = await _diseasesSingleton.UpdateDisease(
+                        ViewConverterDises.ViewToDisease(viewDiseases, viewDiseases.DiseasesType)
+                        );
+            return ViewConverterDises.DisiesToView(
+                    dis, dis.DiseaseType
+                    );
         }
 
 
@@ -59,7 +75,12 @@ namespace MedicalCareApi.Controllers
             if (Id != Guid.Empty)
             {
                 viewDiseases.Id = Id;
-                return await _diseasesSingleton.UpdateDisease(viewDiseases);
+                var dis = await _diseasesSingleton.UpdateDisease(
+                        ViewConverterDises.ViewToDisease(viewDiseases, viewDiseases.DiseasesType)
+                        );
+                return ViewConverterDises.DisiesToView(
+                    dis, dis.DiseaseType
+                    );
             }
 
             return BadRequest();

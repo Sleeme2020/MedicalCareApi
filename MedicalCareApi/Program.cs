@@ -1,6 +1,6 @@
-using MedicalCareApi.DB;
+
 using Microsoft.EntityFrameworkCore;
-using MedicalCareApi.Service;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,8 +13,7 @@ builder.Services.AddSwaggerGen();
 string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
 
-builder.Services.AddDbContext<AppDBModel>(options => options.UseSqlServer(connection));
-builder.Services.AddTransient<ServiceDiseasesSingleton>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

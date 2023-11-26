@@ -1,10 +1,13 @@
-﻿namespace MedicalCareApi.Models
+﻿using Infrastruct;
+
+namespace ModelsDisease
 {
     public class Disease:IUpdate<Disease>
     {
         public Guid Id { get; set; }
 
         public string Name { get; set; }
+        public string FullName { get; set; }
         public string Description { get; set; }
 
         public string DiscriptionDoctor { get; set; }

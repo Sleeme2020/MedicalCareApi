@@ -1,9 +1,9 @@
-﻿using MedicalCareApi.DB;
-using MedicalCareApi.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Net;
+﻿using ModelsDisease;
 
-namespace MedicalCareApi.Service
+using Microsoft.EntityFrameworkCore;
+using Infrastruct;
+
+namespace ServiceDisease
 {
     public class ServiceDisease
     {

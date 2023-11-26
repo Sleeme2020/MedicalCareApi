@@ -1,8 +1,8 @@
-﻿using MedicalCareApi.Models;
+﻿using ModelsDisease;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
-namespace MedicalCareApi.DB
+namespace ServiceDisease
 {
     public class AppDBModel:DbContext
     {

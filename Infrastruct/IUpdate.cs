@@ -1,4 +1,4 @@
-﻿namespace MedicalCareApi.Models
+﻿namespace Infrastruct
 {
     public interface IUpdate<E>
     {
