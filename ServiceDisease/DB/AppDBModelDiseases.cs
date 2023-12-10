@@ -1,16 +1,17 @@
 ﻿using ModelsDisease;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using AbstractSeviceBase;
 
-namespace ServiceDisease
+namespace ServiceDiseases
 {
-    public class AppDBModel:DbContext
+    public class AppDBModelDiseases : AppDBModel
     {
         public DbSet<Disease> Diseases { get; set; }
         public DbSet<DiseaseType> DiseaseTypes { get; set; }
 
 
-        public AppDBModel(DbContextOptions<AppDBModel> options):base(options) 
+        public AppDBModelDiseases(DbContextOptions<AppDBModel> options):base(options) 
         {
             Database.Migrate();
         }

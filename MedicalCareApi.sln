@@ -19,13 +19,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewsDisease", "ViewsDiseas
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastruct", "Infrastruct\Infrastruct.csproj", "{5C86F1FB-D32B-45D9-A4BD-C3EDC1B0FF63}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisiesHistory", "DisiesHistory\DisiesHistory.csproj", "{5EA8AE60-08A2-4507-8F44-8F8B107B1C16}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DisiesHistory", "DisiesHistory\DisiesHistory.csproj", "{5EA8AE60-08A2-4507-8F44-8F8B107B1C16}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalCard", "HospitalCard\HospitalCard.csproj", "{9C5A1A7C-DA02-43C7-852F-D3992E55E5DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalCard", "HospitalCard\HospitalCard.csproj", "{9C5A1A7C-DA02-43C7-852F-D3992E55E5DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HospitalCardService", "HospitalCardService\HospitalCardService.csproj", "{D6571592-FC82-4578-A4C6-FCE333E9BACE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalCardService", "HospitalCardService\HospitalCardService.csproj", "{D6571592-FC82-4578-A4C6-FCE333E9BACE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractSeviceBase", "AbstractSeviceBase\AbstractSeviceBase.csproj", "{ECC73580-34A0-4325-994A-481507870279}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractSeviceBase", "AbstractSeviceBase\AbstractSeviceBase.csproj", "{ECC73580-34A0-4325-994A-481507870279}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtentionMyService", "ExtentionMyService\ExtentionMyService.csproj", "{CB542873-2968-483A-960E-41964E977DBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{ECC73580-34A0-4325-994A-481507870279}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ECC73580-34A0-4325-994A-481507870279}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ECC73580-34A0-4325-994A-481507870279}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB542873-2968-483A-960E-41964E977DBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB542873-2968-483A-960E-41964E977DBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB542873-2968-483A-960E-41964E977DBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB542873-2968-483A-960E-41964E977DBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		{9C5A1A7C-DA02-43C7-852F-D3992E55E5DA} = {5110839B-320C-4A02-A951-08B4DB1EA735}
 		{D6571592-FC82-4578-A4C6-FCE333E9BACE} = {B9CDFD66-6BDC-4895-BE87-D25351E3A94E}
 		{ECC73580-34A0-4325-994A-481507870279} = {B9CDFD66-6BDC-4895-BE87-D25351E3A94E}
+		{CB542873-2968-483A-960E-41964E977DBD} = {5110839B-320C-4A02-A951-08B4DB1EA735}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61E05043-A861-4CFC-8013-C58A554938F4}

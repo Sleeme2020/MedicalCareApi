@@ -2,52 +2,52 @@
 
 using Microsoft.EntityFrameworkCore;
 using Infrastruct;
+using AbstractSeviceBase;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace ServiceDisease
+namespace ServiceDiseases
 {
-    public class ServiceDisease
+    public static class MyExtentionDisease
+    {
+        public static IServiceCollection AddMyService(this IServiceCollection services)
+        {
+            services.AddDbContext<AppDBModelDiseases>();
+            services.AddTransient<IServiceModel<Disease>, ServiceDisease>();
+
+            return services;
+        }
+    }
+
+
+
+    public class ServiceDisease : AbstractBaseServise<Disease>
     {
         AppDBModel _appDB;
-        public ServiceDisease(AppDBModel _appDB)
+        public ServiceDisease(AppDBModelDiseases _appDB) : base(_appDB)
         {
-            this._appDB = _appDB;
+
         }
 
         public IEnumerable<Disease> getDisease()
         {
-            _appDB.Diseases.Include(u=>u.DiseaseType).Load();
-            return _appDB.Diseases;
+            return base.GetValues();
         }
 
         public Disease? UpdDisease(Disease disease)
-        { 
-            var t= _appDB.Diseases.FirstOrDefault(u=>u.Id == disease.Id);
-            (t as IUpdate<Disease>)?.Update(disease);
-            _appDB.SaveChanges();
-            return t;
+        {
+            return base.UpdValue(disease.Id, disease);
         }
 
         public Disease? AddDisease(Disease disease)
         {
-            if(_appDB.Diseases.Any(u => u.Id == disease.Id))
-                throw new Exception("");            
-                
-            _appDB.Diseases.Add(disease);
-            _appDB.SaveChanges();
-            return disease;
-        }
-
-        public DiseaseType? getDiseaseType(int CodeType)
-        {
-            if(!_appDB.DiseaseTypes.Any(u => u.Code == CodeType))
-                throw new Exception("");
-
-            return _appDB.DiseaseTypes.FirstOrDefault(u => u.Code == CodeType);
+            return base.setValue(disease);
         }
 
         public Disease getDisease(Guid Id)
-        {           
-            return _appDB.Diseases.Include(u => u.DiseaseType).First(u => u.Id == Id);
+        {
+            return base.GetValue(Id);
         }
+
+        
     }
 }

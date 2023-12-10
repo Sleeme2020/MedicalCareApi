@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 namespace AbstractSeviceBase
 {
-    public abstract class AbstractBaseServise<T> where T : class
+    public abstract class AbstractBaseServise<T> : IServiceModel<T> where T : class
     {
         AppDBModel _appDB;
 
@@ -23,6 +23,9 @@ namespace AbstractSeviceBase
 
             _dbSet = PropBD?.GetValue(_appDB) as DbSet<T>;
         }
+
+        
+           
 
         protected virtual IEnumerable<T> GetValues()
         {
@@ -70,5 +73,24 @@ namespace AbstractSeviceBase
             return value;
         }
 
+        IEnumerable<T> IServiceModel<T>.get()
+        {
+           return GetValues();
+        }
+
+        T IServiceModel<T>.Upd<C>(C Id, T Enty)
+        {
+            return UpdValue(Id,Enty);
+        }
+
+        T IServiceModel<T>.Add(T Enty)
+        {
+            return setValue(Enty);
+        }
+
+        T IServiceModel<T>.get<C>(C Id)
+        {
+            return GetValue(Id);
+        }
     }
 }

@@ -1,10 +1,11 @@
 
 using ViewsDisease;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using ModelsDisease;
 using Microsoft.AspNetCore.Http.HttpResults;
-using ServiceDisease;
+
+using Microsoft.AspNetCore.Authorization;
+using Infrastruct;
 
 
 namespace MedicalCareApi.Controllers
@@ -13,8 +14,8 @@ namespace MedicalCareApi.Controllers
     [Route("[controller]")]
     public class DiseasesController : ControllerBase
     {
-        ServiceDiseasesSingleton _diseasesSingleton;
-        public DiseasesController(ServiceDiseasesSingleton diseasesSingleton)
+        IServiceModel<Disease> _diseasesSingleton;
+        public DiseasesController(IServiceModel<Disease> diseasesSingleton)
         {
             _diseasesSingleton = diseasesSingleton;
         }
@@ -22,22 +23,22 @@ namespace MedicalCareApi.Controllers
         [HttpGet]
         public async Task<IEnumerable<ViewDiseases>> Get()
         {
-            var t = Task.Run(delegate ()
+            var t = await Task.Run(delegate ()
             {
-                return _diseasesSingleton.BuildServiseDisease()
-                .getDisease()
+                return _diseasesSingleton
+                .get()
                 .Select(u => ViewConverterDises.DisiesToView(u,u.DiseaseType));
 
             });
-            return await t;
+            return  t;
         }
 
         [HttpGet("{Id}")]
         public async Task<ViewDiseases> Get([FromQuery] Guid Id)
         {
-            var t = await Task.Run(async delegate ()
+            var t = await Task.Run( delegate ()
             {
-                var dis = await _diseasesSingleton.getDisease(Id);
+                var dis = _diseasesSingleton.get(Id);
                 return ViewConverterDises.DisiesToView(
                      dis, dis.DiseaseType
                     );
@@ -52,20 +53,21 @@ namespace MedicalCareApi.Controllers
         {
             if (viewDiseases.Id == Guid.Empty)
             {
-                var Dis = await _diseasesSingleton.AddDisease(
+                var Dis = _diseasesSingleton.Add(
                         ViewConverterDises.ViewToDisease(viewDiseases, viewDiseases.DiseasesType)
                         );
                 return ViewConverterDises.DisiesToView(
                     Dis, Dis.DiseaseType
                     );
             }
-            var dis = await _diseasesSingleton.UpdateDisease(
+            var dis =  _diseasesSingleton.Upd(viewDiseases.Id,
                         ViewConverterDises.ViewToDisease(viewDiseases, viewDiseases.DiseasesType)
                         );
             return ViewConverterDises.DisiesToView(
                     dis, dis.DiseaseType
                     );
         }
+       
 
 
         [HttpPost("{Id}")]
@@ -75,7 +77,7 @@ namespace MedicalCareApi.Controllers
             if (Id != Guid.Empty)
             {
                 viewDiseases.Id = Id;
-                var dis = await _diseasesSingleton.UpdateDisease(
+                var dis = _diseasesSingleton.UpdDisease(
                         ViewConverterDises.ViewToDisease(viewDiseases, viewDiseases.DiseasesType)
                         );
                 return ViewConverterDises.DisiesToView(

@@ -2,9 +2,21 @@
 using Microsoft.EntityFrameworkCore;
 using Infrastruct;
 using AbstractSeviceBase;
+using Microsoft.Extensions.DependencyInjection;
 namespace HospitalCardService
 {
-   
+
+    public static class MyExtentionDisease
+    {
+        public static IServiceCollection AddMyService(this IServiceCollection services)
+        {
+            services.AddDbContext<AppDBModelHospital>();
+            services.AddTransient<IServiceModel<HospitalCard.HospitalCard>, HospitalCardService>();
+
+            return services;
+        }
+    }
+
     public class HospitalCardService:AbstractBaseServise<HospitalCard.HospitalCard>
     {
         public HospitalCardService(AppDBModelHospital _appDB) : base(_appDB)
