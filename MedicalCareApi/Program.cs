@@ -2,6 +2,7 @@
 
 using Infrastruct;
 using ExtentionMyService;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,8 +12,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddMyService();
-string connection = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddMyService(Assembly.GetExecutingAssembly());
+
+//string connection = builder.Configuration.GetConnectionString("DefaultConnection");
 
 
 
@@ -28,5 +30,9 @@ if (app.Environment.IsDevelopment())
 //app.UseAuthorization();
 
 app.MapControllers();
+app.UseCors(Cors =>
+{  
 
+
+});
 app.Run();

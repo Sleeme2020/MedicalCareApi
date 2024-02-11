@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ExtentionMyService\ExtentionMyService.csproj" />
     <ProjectReference Include="..\Infrastruct\Infrastruct.csproj" />
+    <ProjectReference Include="..\ServiceDisease\ServiceDisease.csproj" />
     <ProjectReference Include="..\ViewsDisease\ViewsDisease.csproj" />
   </ItemGroup>
 

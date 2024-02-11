@@ -1,0 +1,61 @@
+﻿@page "/disease"
+@inherits DisiesModule
+@inject HttpClient ClientFactory
+<PageTitle> Disies </PageTitle>
+
+<h3>Disies</h3>
+
+<ul>
+    @foreach (var disease in viewsDiseases)
+    {
+        <li>
+            <p> FullName - @disease.FullName</p>
+        </li>
+    }
+</ul>
+<ul>
+    @foreach (var disease in viewsDiseasesType)
+    {
+        <li>
+            <p> FullName - @disease.CodeName</p>
+        </li>
+    }
+</ul>
+
+
+
+<EditForm Model="@Item" OnSubmit="OnClic">
+    <InputText id="Name" @bind-Value = "Item.Name" ></InputText>
+    <InputText id="Description" @bind-Value="Item.Description"></InputText>
+    <InputSelect @bind-Value="CodeName" >
+        @foreach (var val in viewsDiseasesType)
+        {
+            <option value = "@val.CodeName" > @val.CodeName</option>
+        }
+    </InputSelect>
+    <button type="submit">Submit</button>
+</EditForm>
+
+
+
+
+@code {
+    ViewsDisease.ViewDiseases Item { get;
+        set; } = new();
+    string CodeName = "";
+    async Task OnClic()
+    {
+        HttpClient httpClient = ClientFactory;
+        if (CodeName != string.Empty)
+            Item.DiseasesType = viewsDiseasesType.FirstOrDefault(s => s.CodeName == CodeName);
+
+        
+        
+        var result = await httpClient.PostAsJsonAsync("http://localhost:5014/Diseases", Item);
+        var element = await result.Content.ReadFromJsonAsync<ViewsDisease.ViewDiseases>();
+        if(element is not null)
+            viewsDiseases.Add(element);
+
+        Item = new();
+    }
+}

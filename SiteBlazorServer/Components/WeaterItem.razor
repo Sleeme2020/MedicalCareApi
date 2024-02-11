@@ -1,0 +1,24 @@
+﻿@using SiteBlazorServer.Data
+
+@if(Item==null)
+{
+    <tr>
+        <th>Date</th>
+        <th>Temp. (C)</th>
+        <th>Temp. (F)</th>
+        <th>Summary</th>
+    </tr>    
+}
+else{
+<tr>
+    <td>@Item.Date.ToShortDateString()</td>
+    <td>@Item.TemperatureC</td>
+    <td>@Item.TemperatureF</td>
+    <td>@Item.Summary</td>
+</tr>
+}
+
+@code {
+    [Parameter]
+    public WeatherForecast Item { get; set; }
+}

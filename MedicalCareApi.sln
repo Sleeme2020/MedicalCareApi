@@ -27,7 +27,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalCardService", "Hosp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AbstractSeviceBase", "AbstractSeviceBase\AbstractSeviceBase.csproj", "{ECC73580-34A0-4325-994A-481507870279}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtentionMyService", "ExtentionMyService\ExtentionMyService.csproj", "{CB542873-2968-483A-960E-41964E977DBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtentionMyService", "ExtentionMyService\ExtentionMyService.csproj", "{CB542873-2968-483A-960E-41964E977DBD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteDemo", "SiteDemo\SiteDemo.csproj", "{129DF21A-D632-48E2-9703-5B2672665FCC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteBlazorServer", "SiteBlazorServer\SiteBlazorServer.csproj", "{B5F1E555-8AD1-4F63-978F-10E07EA2D55A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteBlazorWA.Server", "SiteBlazorWA\Server\SiteBlazorWA.Server.csproj", "{4BDEB4E2-24CA-4EBB-876D-D52756C7BD10}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteBlazorWA.Client", "SiteBlazorWA\Client\SiteBlazorWA.Client.csproj", "{18019EFA-9C31-47D8-94FB-0D94018583D9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SiteBlazorWA.Shared", "SiteBlazorWA\Shared\SiteBlazorWA.Shared.csproj", "{668CDFFD-E279-4B0F-9775-DB273E9B7E2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +85,26 @@ Global
 		{CB542873-2968-483A-960E-41964E977DBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB542873-2968-483A-960E-41964E977DBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB542873-2968-483A-960E-41964E977DBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{129DF21A-D632-48E2-9703-5B2672665FCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{129DF21A-D632-48E2-9703-5B2672665FCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{129DF21A-D632-48E2-9703-5B2672665FCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{129DF21A-D632-48E2-9703-5B2672665FCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5F1E555-8AD1-4F63-978F-10E07EA2D55A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5F1E555-8AD1-4F63-978F-10E07EA2D55A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5F1E555-8AD1-4F63-978F-10E07EA2D55A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5F1E555-8AD1-4F63-978F-10E07EA2D55A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BDEB4E2-24CA-4EBB-876D-D52756C7BD10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BDEB4E2-24CA-4EBB-876D-D52756C7BD10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BDEB4E2-24CA-4EBB-876D-D52756C7BD10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BDEB4E2-24CA-4EBB-876D-D52756C7BD10}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18019EFA-9C31-47D8-94FB-0D94018583D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18019EFA-9C31-47D8-94FB-0D94018583D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18019EFA-9C31-47D8-94FB-0D94018583D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18019EFA-9C31-47D8-94FB-0D94018583D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{668CDFFD-E279-4B0F-9775-DB273E9B7E2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{668CDFFD-E279-4B0F-9775-DB273E9B7E2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{668CDFFD-E279-4B0F-9775-DB273E9B7E2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{668CDFFD-E279-4B0F-9775-DB273E9B7E2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

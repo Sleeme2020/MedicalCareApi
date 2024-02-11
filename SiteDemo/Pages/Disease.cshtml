@@ -1,0 +1,22 @@
+﻿@page
+@model SiteDemo.Pages.DiseaseModel
+@{
+}
+
+
+<ul>
+    @foreach (var disease in Model.viewsDiseases)
+    {
+        <li>
+            <p> FullName - @disease.FullName</p>
+        </li>
+    }
+</ul>
+<ul>
+    @foreach (var disease in Model.viewsDiseasesType)
+    {
+        <li>
+            <p> FullName - @disease.CodeName</p>
+        </li>
+    }
+</ul>

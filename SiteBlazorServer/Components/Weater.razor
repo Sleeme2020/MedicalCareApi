@@ -1,0 +1,35 @@
+﻿@using SiteBlazorServer.Data
+@inject WeatherForecastService ForecastService
+
+
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>          
+            <WeaterItem Item=null />
+        </thead>
+        <tbody>
+            
+            @foreach (var forecast in forecasts)
+            {
+               <WeaterItem Item=forecast/>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private WeatherForecast[]? forecasts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await Task.Delay(2000);
+
+        forecasts = await ForecastService.GetForecastAsync(DateOnly.FromDateTime(DateTime.Now));
+    }
+    
+}
